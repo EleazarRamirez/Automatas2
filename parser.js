@@ -18,7 +18,7 @@ function analizadorLexico(expresion) {
 
     return null;
   }
-//en esta funcion se asegura de recorer toda la expresion
+//en esta funcion se asegura de recorrer toda la expresion
   function analizar() {
     let token;
     let i=0;
