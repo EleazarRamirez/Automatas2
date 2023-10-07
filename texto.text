@@ -1,0 +1,3 @@
+SELECT nombre, puesto
+FROM Personal
+WHERE nombre='Daniel'
