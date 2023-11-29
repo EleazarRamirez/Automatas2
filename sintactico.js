@@ -8,15 +8,28 @@ function revisarExpresion(expresion,palabras) {
     let index = 0;
 
     const arreglosDeID = {
-          21: [23,41,43,44,7],
-          22: [23],
-          23: [22,7,30,4,98,99,9,10,37,2,3,57,21,8,26],
+          21: [23,41,43,44,7,45,47],
+          22: [23,2],
+          23: [22,8,30,4,98,99,9,10,37,2,3,57,21,8,26,32,33,34,31,36,1,5,6,48,40],
           7: [22,23,24],
-          26: [23],
+          5: [23],
+          24:[27,1],
+          26: [23,187],
           8: [19,23,24,2],
           19: [25,19,4,1,3],
           25: [19],
-          4: [3,1,23],
+          4: [3,1,23,43],
+          3:[30,9,10,8],
+          41:[23,186],
+          37:[38],
+          38:[23,187,188],
+          42:[24],
+          39:[38],
+          40:[23,43],
+          31:[23,2],
+          32:[31],
+          33:[31],
+          34:[31],
           1: [1]
         };
 
@@ -58,18 +71,18 @@ function validarSintaxis(){
     for(let j=0; j<clavesEncontradas.length; j++){
             const token = arreglosDeID[clavesEncontradas[j]];
            if(token != null){
-                for(let k=0; k<token.length;k++){
-                    if(token[k] === clavesEncontradas[j+1]){
-                        //si entro aqui la sintaxis va bien
-                        break;
+            let k=0;
+            let bandera = 0;
+                while(token[k] != clavesEncontradas[j+1]){
+                    if(k < token.length){
+                        k++;
                     }else{
-                        if(clavesEncontradas.length-1 === j){
-                            console.log("Sintaxis Correcto!!");
-                        }
-                        if(k === token.length-1 && clavesEncontradas[j] != 1){
-                            console.log("Error en Sintaxis en la clave: "+j);
-                        }
+                        bandera=1;
+                        console.log("Error de Sintaxis");
                         break;
+                    }
+                    if(j === clavesEncontradas.length-1 && bandera === 0){
+                        console.log("Sintaxis Correcto!");
                     }
                 }
             }
@@ -102,15 +115,22 @@ function validarSintaxis(){
                 }
               }else{
                 componentes.push(componente);
-                if(compararPalabra(componente)){
+                if(isNaN(componente) === false){
                     //solo agrega el token al arreglo
+                    clavesEncontradas.push(24);
+                }else{
+                    if(parseFloat(componente).toString()=== componente){
+                        clavesEncontradas.push(24);
+                    }else{
+                        compararPalabra(componente);
+                    }
                 }
               }
             
         }
     }
     analizar();
-    console.log(clavesEncontradas);
+    //console.log(clavesEncontradas);
     validarSintaxis();
 
         
