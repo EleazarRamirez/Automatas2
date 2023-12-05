@@ -1,3 +1,2 @@
-SELECT clientes.nombre, clientes.email, pedidos.fecha, pedidos.monto
-FROM clientes
-INNER JOIN pedidos ON clientes.id_cliente = pedidos.id_cliente;
+SELECT * FROM empleados
+ORDER BY salario DESC;
